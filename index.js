@@ -1,5 +1,8 @@
+require("dotenv").config();
 const { leerInput, pausa, inquirerMenu } = require("./helpers/inquirer");
 const Busquedas = require("./models/busquedas");
+
+console.log(process.env.MAPBOX_KEY);
 
 const main = async () => {
   const busquedas = new Busquedas();
