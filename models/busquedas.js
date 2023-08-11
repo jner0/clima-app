@@ -23,10 +23,13 @@ class Busquedas {
         params: this.paramsMapbox,
       });
       const resp = await instance.get();
-
-      console.log("working", resp.data);
-
-      return []; //retornar los lugares
+      return resp.data.features.map((lugar) => ({
+        //vamos a retirnar un array con lo que necesitamos, estamos haciendo de forma implicita, por esa razon nosale el return {}
+        id: lugar.id,
+        nombre: lugar.place_name,
+        lng: lugar.center[0],
+        lat: lugar.center[1],
+      }));
     } catch (error) {
       console.log(error);
       return [];
